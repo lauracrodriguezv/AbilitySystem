@@ -13,17 +13,25 @@ AAS_BaseCharacter::AAS_BaseCharacter()
 void AAS_BaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (IsValid(GetMesh()))
+	{
+		AnimInstance = GetMesh()->GetAnimInstance();
+	}
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+void AAS_BaseCharacter::StartMeleeAttack()
+{
+	if(IsValid(AnimInstance) && IsValid(AttackMontage))
+	{
+		AnimInstance->Montage_Play(AttackMontage);
+	}
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 void AAS_BaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-void AAS_BaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 

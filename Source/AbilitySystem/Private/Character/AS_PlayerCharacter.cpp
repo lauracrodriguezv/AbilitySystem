@@ -117,4 +117,6 @@ void AAS_PlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &AAS_PlayerCharacter::StartCrouch);
 	PlayerInputComponent->BindAction("Crouch", IE_Released, this,  &AAS_PlayerCharacter::EndCrouch);
+
+	PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &AAS_PlayerCharacter::StartMeleeAttack);
 }
